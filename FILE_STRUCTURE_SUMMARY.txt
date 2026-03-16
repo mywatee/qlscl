@@ -1,0 +1,334 @@
+================================================================================
+QLSANCL BADMINTON MANAGEMENT SYSTEM - WPF .NET 10
+FILE STRUCTURE & CONVERSION SUMMARY
+================================================================================
+
+PROJECT: QLSANCL.BadmintonManagement
+FRAMEWORK: .NET 10.0 (Windows)
+PLATFORM: WPF (Windows Presentation Foundation)
+LANGUAGE: C# 12.0
+PATTERN: MVVM (Model-View-ViewModel)
+
+================================================================================
+COMPLETE FILE LIST (23 FILES)
+================================================================================
+
+ROOT FILES (4 files)
+------------------------------------------------------------
+1.  App.xaml                           - Application resources and styles
+2.  App.xaml.cs                        - Application startup logic
+3.  MainWindow.xaml                    - Main window with sidebar navigation
+4.  MainWindow.xaml.cs                 - Main window code-behind with navigation logic
+
+MODELS FOLDER (5 files)
+------------------------------------------------------------
+5.  Models/Court.cs                    - Court entity (Id, Name, Type, Status)
+6.  Models/Booking.cs                  - Booking entity (Id, Customer, Date, Time, etc.)
+7.  Models/Customer.cs                 - Customer entity (Id, Name, Phone, Email, etc.)
+8.  Models/Staff.cs                    - Staff entity (Id, Name, Role, Department, etc.)
+9.  Models/Service.cs                  - Service and CartItem entities
+
+VIEWMODELS FOLDER (4 files)
+------------------------------------------------------------
+10. ViewModels/BaseViewModel.cs       - Base class with INotifyPropertyChanged
+11. ViewModels/DashboardViewModel.cs  - Dashboard data and business logic
+12. ViewModels/BookingViewModel.cs    - Booking management logic
+13. ViewModels/CustomersViewModel.cs  - Customer management logic
+
+VIEWS FOLDER (12 files - 6 XAML + 6 Code-behind)
+------------------------------------------------------------
+14. Views/DashboardView.xaml          - Dashboard UI with court grid & stats
+15. Views/DashboardView.xaml.cs       - Dashboard page code-behind
+16. Views/BookingView.xaml            - Booking management UI with data grid
+17. Views/BookingView.xaml.cs         - Booking page code-behind
+18. Views/CustomersView.xaml          - Customer management UI with table
+19. Views/CustomersView.xaml.cs       - Customer page code-behind
+20. Views/ServicesView.xaml           - Services/POS UI with cart
+21. Views/ServicesView.xaml.cs        - Services page code-behind
+22. Views/StaffView.xaml              - Staff management UI
+23. Views/StaffView.xaml.cs           - Staff page code-behind
+24. Views/ReportsView.xaml            - Reports and analytics UI
+25. Views/ReportsView.xaml.cs         - Reports page code-behind
+
+DOCUMENTATION (3 files)
+------------------------------------------------------------
+26. README.md                          - Project overview and features
+27. INSTALLATION_GUIDE.md             - Complete step-by-step setup instructions
+28. QLSANCL.BadmintonManagement.csproj - Project configuration file (reference)
+
+================================================================================
+NUGET PACKAGES REQUIRED
+================================================================================
+
+1. MaterialDesignThemes (v5.1.0)
+   - Material Design UI components and icons
+   - Provides modern, clean UI elements
+
+2. MaterialDesignColors (v3.1.0)
+   - Color schemes for Material Design
+   - Required by MaterialDesignThemes
+
+3. LiveCharts.Wpf (v0.9.7)
+   - Charts and graphs library (optional)
+   - Used in Reports page
+
+4. Microsoft.Xaml.Behaviors.Wpf (v1.1.122)
+   - Additional XAML behaviors
+   - Used for advanced interactions
+
+================================================================================
+CONVERSION DETAILS: REACT TO WPF
+================================================================================
+
+REACT COMPONENT -> WPF EQUIVALENT
+------------------------------------------------------------
+React Components        → WPF Pages (in Views/ folder)
+TypeScript Models       → C# Classes (in Models/ folder)
+React Hooks/State       → ViewModels with INotifyPropertyChanged
+React Router            → WPF Frame navigation
+Tailwind CSS Classes    → WPF Styles in App.xaml
+Material-UI Components  → MaterialDesignThemes controls
+Recharts Library        → LiveCharts.Wpf (optional)
+
+SPECIFIC CONVERSIONS
+------------------------------------------------------------
+<div>                   → <StackPanel>, <Grid>, <Border>
+className               → Style attribute
+onClick                 → Click event
+useState                → Properties with OnPropertyChanged
+useEffect               → Constructor or Loaded event
+map() function          → ItemsControl.ItemsSource binding
+<button>                → <Button>
+<input>                 → <TextBox>
+<select>                → <ComboBox>
+<table>                 → <DataGrid>
+
+DATA BINDING
+------------------------------------------------------------
+React: {value}          → WPF: {Binding Property}
+React: value={state}    → WPF: Text="{Binding Property}"
+React: onChange         → WPF: UpdateSourceTrigger=PropertyChanged
+React: array.map        → WPF: ItemsSource="{Binding Collection}"
+
+NAVIGATION
+------------------------------------------------------------
+React Router            → WPF Frame.Navigate()
+<Route path="/booking"> → case "Booking": Navigate(new BookingView())
+<NavLink to="/staff">   → RadioButton with Checked event
+
+================================================================================
+COLOR SCHEME
+================================================================================
+
+Primary Colors:
+- Navy Blue Dark:  #0F172A  (Sidebar background)
+- Navy Blue Light: #1E293B  (Sidebar hover)
+- Lime Green:      #84CC16  (Active nav, buttons, accents)
+- Lime Green Light:#A3E635  (Button hover)
+
+Secondary Colors:
+- Background Gray: #F8FAFC  (Main background)
+- Slate Gray:      #64748B  (Secondary text)
+- White:           #FFFFFF  (Cards, text)
+
+Status Colors:
+- Green (Available):  #ECFCCB background, #65A30D text
+- Blue (In-use):      #DBEAFE background, #1E40AF text
+- Orange (Maint):     #FED7AA background, #C2410C text
+- Yellow (Pending):   #FEF3C7 background, #92400E text
+- Emerald (Success):  #D1FAE5 background, #065F46 text
+- Red (Cancelled):    #FEE2E2 background, #991B1B text
+
+================================================================================
+KEY FEATURES IMPLEMENTED
+================================================================================
+
+DASHBOARD PAGE:
+✓ 4 stat cards (Revenue, Bookings, Customers, Growth)
+✓ 8-court status grid (Indoor, Outdoor, Pro Mat)
+✓ Real-time status indicators (Available, In-use, Maintenance)
+✓ Recent bookings list with status badges
+
+BOOKING PAGE:
+✓ Complete booking table with all fields
+✓ Search functionality
+✓ Status badges (Checked-in, Pending, Cancelled)
+✓ Type badges (Casual, Fixed)
+✓ "New Booking" button (UI ready for implementation)
+
+CUSTOMERS PAGE:
+✓ 4 stat cards (Total, VIP, New, Active)
+✓ Searchable customer table
+✓ Customer profiles with contact info
+✓ Booking history and spending data
+✓ Status indicators (VIP, Regular, New)
+✓ "View Details" button per customer
+
+SERVICES PAGE:
+✓ Drinks section with product cards
+✓ Equipment rental section
+✓ Shopping cart panel
+✓ Promotion code input
+✓ Payment method selection UI
+✓ Real-time total calculation
+
+STAFF PAGE:
+✓ 4 stat cards (Total Staff, Active, On Leave, Accounts)
+✓ Employee directory table
+✓ Contact information display
+✓ Department and role categorization
+✓ Status indicators
+
+REPORTS PAGE:
+✓ 4 KPI cards with trend indicators
+✓ Chart placeholders for revenue trends
+✓ Top customers ranking list
+✓ Export button
+✓ Date range selector
+
+================================================================================
+NAVIGATION STRUCTURE
+================================================================================
+
+MainWindow (Persistent Sidebar)
+│
+├── Dashboard      (Default page)
+├── Booking
+├── Services
+├── Customers
+├── Staff
+└── Reports
+
+Navigation Method: Frame-based page navigation with RadioButton sidebar
+
+================================================================================
+MVVM PATTERN IMPLEMENTATION
+================================================================================
+
+MODEL (Data Layer):
+- Court, Booking, Customer, Staff, Service classes
+- Plain C# classes with properties
+- No UI dependencies
+
+VIEW (Presentation Layer):
+- XAML files define UI structure
+- Data binding to ViewModel properties
+- No business logic in code-behind
+
+VIEWMODEL (Logic Layer):
+- Inherits from BaseViewModel (INotifyPropertyChanged)
+- Contains ObservableCollections for data
+- Implements business logic
+- Exposes properties for View binding
+
+DATA FLOW:
+Model → ViewModel (loads data) → View (displays via binding)
+View (user input) → ViewModel (processes) → Model (updates)
+
+================================================================================
+INSTALLATION STEPS SUMMARY
+================================================================================
+
+1. Install Visual Studio 2022 with .NET 10.0
+2. Create new WPF Application project
+3. Install 4 NuGet packages (MaterialDesign, LiveCharts, Behaviors)
+4. Create folder structure (Models, ViewModels, Views)
+5. Add/Replace all 25 code files
+6. Build solution (Ctrl+Shift+B)
+7. Run application (F5)
+
+Estimated time: 30-45 minutes for experienced developers
+
+================================================================================
+SAMPLE DATA INCLUDED
+================================================================================
+
+Courts:        8 courts (3 Indoor, 3 Outdoor, 2 Pro Mat)
+Bookings:      5 sample bookings with different statuses
+Customers:     5 sample customers (VIP, Regular, New)
+Services:      4 drinks, 4 equipment items
+Staff:         6 employees in various roles
+
+All data is mock/sample data stored in ViewModels.
+Replace with database integration for production use.
+
+================================================================================
+NEXT STEPS FOR PRODUCTION
+================================================================================
+
+1. DATABASE INTEGRATION
+   - Install Entity Framework Core
+   - Create DbContext and migrations
+   - Replace mock data with database queries
+   - Implement CRUD operations
+
+2. AUTHENTICATION
+   - Add login window
+   - Implement user authentication
+   - Role-based access control
+
+3. ADVANCED FEATURES
+   - Implement "New Booking" dialog functionality
+   - Add edit/delete operations
+   - Print invoices and reports
+   - Real-time chart rendering with LiveCharts
+
+4. VALIDATION
+   - Add input validation
+   - Error handling and user feedback
+   - Data validation rules
+
+5. REPORTING
+   - Integrate LiveCharts for real charts
+   - Export to PDF/Excel functionality
+   - Advanced filtering and date ranges
+
+6. DEPLOYMENT
+   - Create installer package
+   - Configure for production deployment
+   - Add auto-update functionality
+
+================================================================================
+SUPPORT RESOURCES
+================================================================================
+
+Official Documentation:
+- WPF Docs: https://docs.microsoft.com/en-us/dotnet/desktop/wpf/
+- Material Design: https://github.com/MaterialDesignInXAML
+- C# Reference: https://docs.microsoft.com/en-us/dotnet/csharp/
+
+Community:
+- Stack Overflow (tag: wpf)
+- WPF Tutorial: https://wpf-tutorial.com/
+- Material Design Demo: materialdesigninxaml.net
+
+Contact:
+- Email: support@qlsancl.com
+
+================================================================================
+VERSION INFORMATION
+================================================================================
+
+Application Version: 1.0.0
+Release Date: March 16, 2026
+.NET Version: 10.0
+Platform: Windows 10/11
+Architecture: x64
+Language: C# 12.0
+
+================================================================================
+LICENSE
+================================================================================
+
+This project code is provided for educational and commercial use.
+All third-party libraries maintain their original licenses.
+
+================================================================================
+END OF FILE STRUCTURE SUMMARY
+================================================================================
+
+For detailed instructions, see INSTALLATION_GUIDE.md
+For project overview, see README.md
+For latest updates, check project repository
+
+Thank you for using QLSANCL Badminton Management System!

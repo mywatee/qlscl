@@ -1,0 +1,326 @@
+================================================================================
+QLSANCL BADMINTON MANAGEMENT SYSTEM - QUICK START GUIDE
+================================================================================
+
+⚡ FASTEST WAY TO GET STARTED ⚡
+
+================================================================================
+PREREQUISITES (5 MINUTES)
+================================================================================
+
+□ Windows 10/11
+□ Visual Studio 2022 (Download: https://visualstudio.microsoft.com/)
+□ .NET 10.0 SDK (or .NET 8/9 as fallback)
+
+================================================================================
+SETUP (10 MINUTES)
+================================================================================
+
+STEP 1: Create Project
+-----------------------
+1. Open Visual Studio 2022
+2. Click "Create a new project"
+3. Select "WPF Application"
+4. Name: QLSANCL.BadmintonManagement
+5. Framework: .NET 10.0
+6. Click "Create"
+
+STEP 2: Install Packages
+-------------------------
+Open Package Manager Console (Tools → NuGet Package Manager → Console)
+
+Copy and paste ALL these commands:
+
+Install-Package MaterialDesignThemes -Version 5.1.0
+Install-Package MaterialDesignColors -Version 3.1.0
+Install-Package LiveCharts.Wpf -Version 0.9.7
+Install-Package Microsoft.Xaml.Behaviors.Wpf -Version 1.1.122
+
+STEP 3: Create Folders
+-----------------------
+In Solution Explorer, right-click project → Add → New Folder
+
+Create:
+- Models
+- ViewModels  
+- Views
+
+STEP 4: Add Files
+-----------------
+For each file in this export:
+
+A. ROOT FILES (Replace existing):
+   - App.xaml
+   - App.xaml.cs
+   - MainWindow.xaml
+   - MainWindow.xaml.cs
+
+B. MODELS (Add → Class):
+   - Court.cs
+   - Booking.cs
+   - Customer.cs
+   - Staff.cs
+   - Service.cs
+
+C. VIEWMODELS (Add → Class):
+   - BaseViewModel.cs
+   - DashboardViewModel.cs
+   - BookingViewModel.cs
+   - CustomersViewModel.cs
+
+D. VIEWS (Add → New Item → Page (WPF)):
+   - DashboardView.xaml + .cs
+   - BookingView.xaml + .cs
+   - CustomersView.xaml + .cs
+   - ServicesView.xaml + .cs
+   - StaffView.xaml + .cs
+   - ReportsView.xaml + .cs
+
+STEP 5: Build & Run
+--------------------
+1. Press Ctrl+Shift+B (Build)
+2. Press F5 (Run)
+3. Application should open with Dashboard
+
+================================================================================
+FILE CHECKLIST
+================================================================================
+
+ROOT FILES:
+□ App.xaml
+□ App.xaml.cs
+□ MainWindow.xaml
+□ MainWindow.xaml.cs
+
+MODELS/ (5 files):
+□ Court.cs
+□ Booking.cs
+□ Customer.cs
+□ Staff.cs
+□ Service.cs
+
+VIEWMODELS/ (4 files):
+□ BaseViewModel.cs
+□ DashboardViewModel.cs
+□ BookingViewModel.cs
+□ CustomersViewModel.cs
+
+VIEWS/ (12 files - 6 XAML + 6 CS):
+□ DashboardView.xaml
+□ DashboardView.xaml.cs
+□ BookingView.xaml
+□ BookingView.xaml.cs
+□ CustomersView.xaml
+□ CustomersView.xaml.cs
+□ ServicesView.xaml
+□ ServicesView.xaml.cs
+□ StaffView.xaml
+□ StaffView.xaml.cs
+□ ReportsView.xaml
+□ ReportsView.xaml.cs
+
+TOTAL: 25 files
+
+================================================================================
+EXPECTED RESULT
+================================================================================
+
+When you run the application (F5):
+
+✓ Window opens (1600x900 or maximized)
+✓ Navy blue sidebar on left
+✓ "QLSANCL" logo at top
+✓ 6 navigation buttons (Dashboard selected by default)
+✓ Dashboard page shows:
+  - 4 stat cards at top
+  - 8 court grid in center (Court 1-8)
+  - Recent bookings on right
+✓ Click other nav buttons to switch pages
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+PROBLEM: "MaterialDesign namespace not found"
+SOLUTION: 
+  1. Verify packages installed (check package.config or .csproj)
+  2. Rebuild solution (Ctrl+Shift+B)
+  3. Restart Visual Studio
+
+PROBLEM: "DashboardView does not exist"
+SOLUTION:
+  1. Make sure all View files are in Views/ folder
+  2. Check namespace in .xaml.cs: QLSANCL.BadmintonManagement.Views
+  3. Rebuild solution
+
+PROBLEM: Navigation doesn't work
+SOLUTION:
+  1. Check MainWindow.xaml has Frame element
+  2. Verify NavigationButton_Checked method exists
+  3. Make sure all View pages are added to project
+
+PROBLEM: No data showing
+SOLUTION:
+  1. Check DataContext is set in View constructor
+  2. Verify ViewModel constructor initializes data
+  3. Check XAML bindings match ViewModel properties
+
+================================================================================
+TESTING THE APPLICATION
+================================================================================
+
+TEST EACH PAGE:
+
+□ DASHBOARD
+  - See 4 stat cards with numbers
+  - See 8 court cards in grid
+  - See 4 recent bookings on right
+
+□ BOOKING
+  - See booking table with 5 rows
+  - Search box works
+  - "New Booking" button visible
+
+□ CUSTOMERS
+  - See 4 stat cards
+  - See customer table with 5 rows
+  - "View Details" buttons visible
+
+□ SERVICES
+  - See drinks grid (2x2)
+  - See equipment grid (2x2)
+  - Cart panel on right
+
+□ STAFF
+  - See 4 stat cards
+  - See empty employee table
+  - "Add Staff" button visible
+
+□ REPORTS
+  - See 4 KPI cards with trends
+  - See chart placeholders
+  - See top customers list
+
+================================================================================
+CUSTOMIZATION QUICK TIPS
+================================================================================
+
+CHANGE COLORS:
+Edit App.xaml:
+<SolidColorBrush x:Key="NavyBlueBrush" Color="#YOUR_COLOR"/>
+<SolidColorBrush x:Key="LimeGreen" Color="#YOUR_COLOR"/>
+
+CHANGE WINDOW TITLE:
+Edit MainWindow.xaml:
+<Window ... Title="Your Title Here">
+
+CHANGE DEFAULT PAGE:
+Edit MainWindow.xaml.cs constructor:
+MainFrame.Navigate(new YourPageView());
+
+ADD NEW PAGE:
+1. Create View in Views/ folder
+2. Add nav button in MainWindow.xaml
+3. Add case in NavigationButton_Checked method
+
+================================================================================
+NEXT STEPS
+================================================================================
+
+After successful setup:
+
+1. Explore each page and understand the layout
+2. Review ViewModels to see sample data
+3. Read INSTALLATION_GUIDE.md for detailed info
+4. Check README.md for feature descriptions
+5. Start customizing for your needs
+
+================================================================================
+GETTING HELP
+================================================================================
+
+IF STUCK:
+1. Check INSTALLATION_GUIDE.md (detailed instructions)
+2. Check FILE_STRUCTURE_SUMMARY.txt (complete file list)
+3. Review error messages carefully
+4. Google the error with "WPF" keyword
+5. Check Stack Overflow (tag: wpf)
+
+COMMON ERRORS GOOGLE SEARCH:
+- "WPF MaterialDesignThemes namespace not found"
+- "WPF Frame navigation not working"
+- "WPF DataGrid not showing data"
+- "WPF INotifyPropertyChanged implementation"
+
+================================================================================
+PACKAGE VERSIONS REFERENCE
+================================================================================
+
+If packages fail to install, try these exact versions:
+
+MaterialDesignThemes: 5.1.0, 5.0.0, 4.9.0
+MaterialDesignColors: 3.1.0, 3.0.0
+LiveCharts.Wpf: 0.9.7
+Microsoft.Xaml.Behaviors.Wpf: 1.1.122, 1.1.77
+
+Or install latest stable:
+Install-Package PackageName
+
+================================================================================
+ALTERNATIVE .NET VERSIONS
+================================================================================
+
+If .NET 10 not available, modify .csproj:
+
+.NET 9:  <TargetFramework>net9.0-windows</TargetFramework>
+.NET 8:  <TargetFramework>net8.0-windows</TargetFramework>
+.NET 7:  <TargetFramework>net7.0-windows</TargetFramework>
+
+All code works on .NET 6.0+ (Windows)
+
+================================================================================
+TIME ESTIMATES
+================================================================================
+
+Complete Setup:    30-45 minutes
+First Build:       2-5 minutes
+Testing All Pages: 10 minutes
+Reading Docs:      20-30 minutes
+
+TOTAL TIME: ~1.5 hours for complete understanding
+
+================================================================================
+SUCCESS CRITERIA
+================================================================================
+
+You've succeeded when:
+✓ Application builds without errors
+✓ Application runs and shows Dashboard
+✓ All 6 navigation buttons work
+✓ Each page displays correctly
+✓ Sample data shows in tables and cards
+✓ No red error messages
+
+================================================================================
+CONGRATULATIONS!
+================================================================================
+
+If your application is running, you've successfully converted the 
+React web app to a WPF desktop application!
+
+Now you can:
+- Customize the design
+- Add database integration
+- Implement full CRUD operations
+- Deploy to users
+
+Good luck with your badminton management system! 🏸
+
+================================================================================
+For more information:
+- INSTALLATION_GUIDE.md (detailed setup)
+- README.md (features and overview)
+- FILE_STRUCTURE_SUMMARY.txt (complete file reference)
+
+Version 1.0.0 | March 2026
+================================================================================
